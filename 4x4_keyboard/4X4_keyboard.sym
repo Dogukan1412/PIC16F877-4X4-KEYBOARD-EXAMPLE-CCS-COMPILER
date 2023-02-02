@@ -1,0 +1,59 @@
+004-005 @READ_PROGRAM_MEMORY8.P1
+004-005 @WRITE_PROGRAM_MEMORY8.P2
+008     PSP_DATA
+015     CCP_1_LOW
+015     CCP_1
+016     CCP_1_HIGH
+01B     CCP_2
+01B     CCP_2_LOW
+01C     CCP_2_HIGH
+020     key
+021     @delay_ms1.P1
+021     MAIN.@SCRATCH1
+077     @SCRATCH
+078     @SCRATCH
+078     _RETURN_
+079     @SCRATCH
+07A     @SCRATCH
+10D-10E @WRITE_PROGRAM_MEMORY8.P1
+10D-10E @READ_PROGRAM_MEMORY8.P2
+
+ROM Allocation:
+000004  @delay_ms1
+000019  keyboard
+0000E1  MAIN
+0000E1  @cinit1
+0000E7  @cinit2
+
+Project Directory:
+    C:\Users\doguk\Desktop\pic_denemeler\4x4_keyboard\
+
+Project Files:
+    4X4_keyboard.c                                          [09-Ara-22 22:53  CRC=98A64436]
+    4X4_keyboard.h                                          [09-Ara-22 22:28  CRC=64D0046D]
+    ..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877.h [21-Haz-13 16:04  CRC=A355A189]
+
+Source signature=44218BB5
+
+Units:
+    4X4_keyboard (main)
+
+Compiler Settings:
+    Processor:      PIC16F877
+    Pointer Size:   16
+    ADC Range:      0-65535
+    Opt Level:      9
+    Short,Int,Long: UNSIGNED: 1,8,16
+    Float,Double:   32,32
+
+Output Files:
+    XREF file:   4X4_keyboard.xsym
+    Errors:      4X4_keyboard.err
+    Ext Symbols: 4X4_keyboard.esym
+    INHX8:       4X4_keyboard.hex
+    Symbols:     4X4_keyboard.sym
+    List:        4X4_keyboard.lst
+    Debug/COFF:  4X4_keyboard.cof
+    Project:     4X4_keyboard.ccspjt
+    Call Tree:   4X4_keyboard.tre
+    Statistics:  4X4_keyboard.STA

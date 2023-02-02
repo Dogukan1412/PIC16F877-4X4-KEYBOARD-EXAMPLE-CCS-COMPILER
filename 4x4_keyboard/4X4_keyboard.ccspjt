@@ -1,0 +1,22 @@
+[PROJECT]
+Target=4X4_keyboard.hex
+Processor_Text=PIC16F877
+CCSVerions=5.007
+Compiler=PCM
+CCSVersion=5.007
+[Target Data]
+FileList=4X4_keyboard.c
+[Directories]
+Include=C:\Program Files (x86)\PICC\Devices\;C:\Program Files (x86)\PICC\Drivers\;C:\Users\doguk\Desktop\pic_denemeler\;C:\Users\doguk\Desktop\pic_denemeler\4x4_keyboard\
+[C:\Users\doguk\Desktop\pic_denemeler\4X4_keyboard]
+Type=4
+[mru-list]
+1=4X4_keyboard.c
+[Opened Files]
+1=4X4_keyboard.c
+2=
+[4X4_keyboard.c]
+Type=4
+[Units]
+Count=1
+1=4X4_keyboard (main)

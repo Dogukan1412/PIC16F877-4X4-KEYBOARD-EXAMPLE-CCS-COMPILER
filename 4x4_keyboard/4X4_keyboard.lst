@@ -1,0 +1,345 @@
+CCS PCM C Compiler, Version 5.007, 61971               09-Ara-22 22:53
+
+               Filename:   C:\Users\doguk\Desktop\pic_denemeler\4x4_keyboard\4X4_keyboard.lst
+
+               ROM used:   255 words (3%)
+                           Largest free fragment is 2048
+               RAM used:   7 (2%) at main() level
+                           7 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   0E1
+0003:  NOP
+.................... #include <4X4_keyboard.h> 
+.................... #include <16F877.h> 
+.................... //////// Standard Header file for the PIC16F877 device //////////////// 
+.................... #device PIC16F877 
+....................  
+.................... #list 
+....................  
+.................... #device ADC=16 
+....................  
+.................... #FUSES NOWDT                 	//No Watch Dog Timer 
+.................... #FUSES NOBROWNOUT            	//No brownout reset 
+.................... #FUSES NOLVP                 	//No low voltage prgming, B3(PIC16) or B5(PIC18) used for I/O 
+....................  
+.................... #use delay(crystal=4MHz) 
+0004:  MOVLW  21
+0005:  MOVWF  04
+0006:  BCF    03.7
+0007:  MOVF   00,W
+0008:  BTFSC  03.2
+0009:  GOTO   018
+000A:  MOVLW  01
+000B:  MOVWF  78
+000C:  CLRF   77
+000D:  DECFSZ 77,F
+000E:  GOTO   00D
+000F:  DECFSZ 78,F
+0010:  GOTO   00C
+0011:  MOVLW  4A
+0012:  MOVWF  77
+0013:  DECFSZ 77,F
+0014:  GOTO   013
+0015:  GOTO   016
+0016:  DECFSZ 00,F
+0017:  GOTO   00A
+0018:  RETURN
+....................  
+....................  
+....................  
+.................... #define column1 pin_d0 
+.................... #define column2 pin_d1 
+.................... #define column3 pin_d2 
+.................... #define column4 pin_d3 
+.................... #define row1    pin_d4 
+.................... #define row2    pin_d5 
+.................... #define row3    pin_d6 
+.................... #define row4    pin_d7 
+....................  
+.................... int key = 0; 
+....................  
+.................... int keyboard() 
+.................... { 
+....................    output_d(0x00); 
+0019:  BSF    03.5
+001A:  CLRF   08
+001B:  BCF    03.5
+001C:  CLRF   08
+....................     
+....................    output_high(row1); 
+001D:  BSF    03.5
+001E:  BCF    08.4
+001F:  BCF    03.5
+0020:  BSF    08.4
+....................    if(input(column1)) {delay_ms(20); key = 1;} 
+0021:  BSF    03.5
+0022:  BSF    08.0
+0023:  BCF    03.5
+0024:  BTFSS  08.0
+0025:  GOTO   02B
+0026:  MOVLW  14
+0027:  MOVWF  21
+0028:  CALL   004
+0029:  MOVLW  01
+002A:  MOVWF  20
+....................    if(input(column2)) {delay_ms(20); key = 2;} 
+002B:  BSF    03.5
+002C:  BSF    08.1
+002D:  BCF    03.5
+002E:  BTFSS  08.1
+002F:  GOTO   035
+0030:  MOVLW  14
+0031:  MOVWF  21
+0032:  CALL   004
+0033:  MOVLW  02
+0034:  MOVWF  20
+....................    if(input(column3)) {delay_ms(20); key = 3;} 
+0035:  BSF    03.5
+0036:  BSF    08.2
+0037:  BCF    03.5
+0038:  BTFSS  08.2
+0039:  GOTO   03F
+003A:  MOVLW  14
+003B:  MOVWF  21
+003C:  CALL   004
+003D:  MOVLW  03
+003E:  MOVWF  20
+....................    if(input(column4)) {delay_ms(20); key = 10;} 
+003F:  BSF    03.5
+0040:  BSF    08.3
+0041:  BCF    03.5
+0042:  BTFSS  08.3
+0043:  GOTO   049
+0044:  MOVLW  14
+0045:  MOVWF  21
+0046:  CALL   004
+0047:  MOVLW  0A
+0048:  MOVWF  20
+....................    output_low(row1); 
+0049:  BSF    03.5
+004A:  BCF    08.4
+004B:  BCF    03.5
+004C:  BCF    08.4
+....................     
+....................    output_high(row2); 
+004D:  BSF    03.5
+004E:  BCF    08.5
+004F:  BCF    03.5
+0050:  BSF    08.5
+....................    if(input(column1)) {delay_ms(20); key = 4;} 
+0051:  BSF    03.5
+0052:  BSF    08.0
+0053:  BCF    03.5
+0054:  BTFSS  08.0
+0055:  GOTO   05B
+0056:  MOVLW  14
+0057:  MOVWF  21
+0058:  CALL   004
+0059:  MOVLW  04
+005A:  MOVWF  20
+....................    if(input(column2)) {delay_ms(20); key = 5;} 
+005B:  BSF    03.5
+005C:  BSF    08.1
+005D:  BCF    03.5
+005E:  BTFSS  08.1
+005F:  GOTO   065
+0060:  MOVLW  14
+0061:  MOVWF  21
+0062:  CALL   004
+0063:  MOVLW  05
+0064:  MOVWF  20
+....................    if(input(column3)) {delay_ms(20); key = 6;} 
+0065:  BSF    03.5
+0066:  BSF    08.2
+0067:  BCF    03.5
+0068:  BTFSS  08.2
+0069:  GOTO   06F
+006A:  MOVLW  14
+006B:  MOVWF  21
+006C:  CALL   004
+006D:  MOVLW  06
+006E:  MOVWF  20
+....................    if(input(column4)) {delay_ms(20); key = 11;} 
+006F:  BSF    03.5
+0070:  BSF    08.3
+0071:  BCF    03.5
+0072:  BTFSS  08.3
+0073:  GOTO   079
+0074:  MOVLW  14
+0075:  MOVWF  21
+0076:  CALL   004
+0077:  MOVLW  0B
+0078:  MOVWF  20
+....................    output_low(row2); 
+0079:  BSF    03.5
+007A:  BCF    08.5
+007B:  BCF    03.5
+007C:  BCF    08.5
+....................     
+....................    output_high(row3); 
+007D:  BSF    03.5
+007E:  BCF    08.6
+007F:  BCF    03.5
+0080:  BSF    08.6
+....................    if(input(column1)) {delay_ms(20); key = 7;} 
+0081:  BSF    03.5
+0082:  BSF    08.0
+0083:  BCF    03.5
+0084:  BTFSS  08.0
+0085:  GOTO   08B
+0086:  MOVLW  14
+0087:  MOVWF  21
+0088:  CALL   004
+0089:  MOVLW  07
+008A:  MOVWF  20
+....................    if(input(column2)) {delay_ms(20); key = 8;} 
+008B:  BSF    03.5
+008C:  BSF    08.1
+008D:  BCF    03.5
+008E:  BTFSS  08.1
+008F:  GOTO   095
+0090:  MOVLW  14
+0091:  MOVWF  21
+0092:  CALL   004
+0093:  MOVLW  08
+0094:  MOVWF  20
+....................    if(input(column3)) {delay_ms(20); key = 9;} 
+0095:  BSF    03.5
+0096:  BSF    08.2
+0097:  BCF    03.5
+0098:  BTFSS  08.2
+0099:  GOTO   09F
+009A:  MOVLW  14
+009B:  MOVWF  21
+009C:  CALL   004
+009D:  MOVLW  09
+009E:  MOVWF  20
+....................    if(input(column4)) {delay_ms(20); key = 12;} 
+009F:  BSF    03.5
+00A0:  BSF    08.3
+00A1:  BCF    03.5
+00A2:  BTFSS  08.3
+00A3:  GOTO   0A9
+00A4:  MOVLW  14
+00A5:  MOVWF  21
+00A6:  CALL   004
+00A7:  MOVLW  0C
+00A8:  MOVWF  20
+....................    output_low(row3); 
+00A9:  BSF    03.5
+00AA:  BCF    08.6
+00AB:  BCF    03.5
+00AC:  BCF    08.6
+....................     
+....................    output_high(row4); 
+00AD:  BSF    03.5
+00AE:  BCF    08.7
+00AF:  BCF    03.5
+00B0:  BSF    08.7
+....................    if(input(column1)) {delay_ms(20); key = 14;} 
+00B1:  BSF    03.5
+00B2:  BSF    08.0
+00B3:  BCF    03.5
+00B4:  BTFSS  08.0
+00B5:  GOTO   0BB
+00B6:  MOVLW  14
+00B7:  MOVWF  21
+00B8:  CALL   004
+00B9:  MOVLW  0E
+00BA:  MOVWF  20
+....................    if(input(column2)) {delay_ms(20); key = 0;} 
+00BB:  BSF    03.5
+00BC:  BSF    08.1
+00BD:  BCF    03.5
+00BE:  BTFSS  08.1
+00BF:  GOTO   0C4
+00C0:  MOVLW  14
+00C1:  MOVWF  21
+00C2:  CALL   004
+00C3:  CLRF   20
+....................    if(input(column3)) {delay_ms(20); key = 15;} 
+00C4:  BSF    03.5
+00C5:  BSF    08.2
+00C6:  BCF    03.5
+00C7:  BTFSS  08.2
+00C8:  GOTO   0CE
+00C9:  MOVLW  14
+00CA:  MOVWF  21
+00CB:  CALL   004
+00CC:  MOVLW  0F
+00CD:  MOVWF  20
+....................    if(input(column4)) {delay_ms(20); key = 13;} 
+00CE:  BSF    03.5
+00CF:  BSF    08.3
+00D0:  BCF    03.5
+00D1:  BTFSS  08.3
+00D2:  GOTO   0D8
+00D3:  MOVLW  14
+00D4:  MOVWF  21
+00D5:  CALL   004
+00D6:  MOVLW  0D
+00D7:  MOVWF  20
+....................    output_low(row4); 
+00D8:  BSF    03.5
+00D9:  BCF    08.7
+00DA:  BCF    03.5
+00DB:  BCF    08.7
+....................     
+....................    return key; 
+00DC:  MOVF   20,W
+00DD:  MOVWF  78
+00DE:  BCF    0A.3
+00DF:  BCF    0A.4
+00E0:  GOTO   0F6 (RETURN)
+.................... } 
+....................  
+.................... void main() 
+00E1:  CLRF   20
+00E2:  BSF    03.5
+00E3:  BSF    1F.0
+00E4:  BSF    1F.1
+00E5:  BSF    1F.2
+00E6:  BCF    1F.3
+00E7:  BCF    03.7
+00E8:  MOVLW  1F
+00E9:  ANDWF  03,F
+.................... { 
+....................    set_tris_b(0x00); 
+00EA:  MOVLW  00
+00EB:  MOVWF  06
+....................    set_tris_d(0x0f); 
+00EC:  MOVLW  0F
+00ED:  MOVWF  08
+....................    output_b(0x00); 
+00EE:  CLRF   06
+00EF:  BCF    03.5
+00F0:  CLRF   06
+....................    output_d(0x00); 
+00F1:  BSF    03.5
+00F2:  CLRF   08
+00F3:  BCF    03.5
+00F4:  CLRF   08
+....................    while(TRUE) 
+....................    { 
+....................       output_b(keyboard()); 
+00F5:  GOTO   019
+00F6:  MOVF   78,W
+00F7:  MOVWF  21
+00F8:  BSF    03.5
+00F9:  CLRF   06
+00FA:  BCF    03.5
+00FB:  MOVF   21,W
+00FC:  MOVWF  06
+00FD:  GOTO   0F5
+....................    } 
+....................  
+.................... } 
+00FE:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3F31   XT NOWDT PUT NOBROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT

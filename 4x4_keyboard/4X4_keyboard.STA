@@ -1,0 +1,50 @@
+
+ROM used:   255/8192 (3%)
+            255/8192 (3%) including unused fragments
+
+            0.4 Average locations per line
+            3.1 Average locations per statement
+
+RAM used:   7/368 (2%) at main() level
+            7/368 (2%) worst case
+
+Stack used: 0 worst case (0 in main + 0 for interrupts)
+Stack size: 8
+
+Lines Stmts  %   Files
+----- ----- ---  -----
+   61    81 100  4X4_keyboard.c
+   10     0   0  4X4_keyboard.h
+  629     0   0  ..\..\..\..\..\Program Files (x86)\PICC\Devices\16F877.h
+----- -----
+  700    81 Total
+
+Page ROM  %  RAM   Vol Diff  Functions:
+---- --- --- ---   --- ----  ----------
+0     21   8    1             @delay_ms1
+0    200  78    0  1840  2.9  keyboard
+0     30  12    1   110  1.7  MAIN
+ Inline         0             @cinit1
+
+Program metrics:
+    Functions               2
+    Statements              81
+    Comments                102
+    Volume (V)              2088
+    Difficulty (D)          4.8
+    Effort to implement (E) 9964
+    Time to implement (T)   9 minutes
+    Est Delivered Bugs (B)  0
+    Cyclomatic Complexity   16
+    Maintainability (MI)    23
+
+ Segment     Used  Free
+-----------  ----  ----
+00000-00003     4  0  
+00004-007FF   251  1793  
+00800-00FFF     0  2048  
+01000-017FF     0  2048  
+01800-01FFF     0  2048  
+
+
+
